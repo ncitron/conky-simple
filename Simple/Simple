@@ -40,7 +40,7 @@ total_run_times 0
 # Gap between borders of screen and text
 # same thing as passing -x at command line
 gap_x 40
-gap_y 80
+gap_y 40
 
 # Minimum size of text area
 minimum_size 30 0
@@ -52,7 +52,7 @@ own_window yes
 own_window_type dock
 own_window_transparent yes
 own_window_argb_visual yes
-own_window_argb_visual no
+own_window_argb_visual yes
 own_window_colour 000000
 own_window_argb_value 0
 own_window_hints undecorated,below,sticky,skip_taskbar,skip_pager
@@ -118,7 +118,7 @@ own_window_colour 000000
 TEXT
 #SYSTEM DETAILS:
 ${font Monospace:style=Bold:pixelsize=16}${color4}SYSTEM ${color6}${hr 2}
-${color}${font Monospace:size=7.2}OS: ${alignr}Ubuntu 16.04.1 LTS (Xenial Xerus) - Unity
+${color}${font Monospace:size=7.2}OS: ${alignr}Manjaro Linux x86_64
 KERNEL: $alignr$sysname $kernel ($machine)
 UPTIME: $alignr$uptime
 RUNNING PROCESSES: ${alignr}$processes (${color4}$running_processes Executing${color})
@@ -126,14 +126,14 @@ RUNNING PROCESSES: ${alignr}$processes (${color4}$running_processes Executing${c
 
 ${color4}${font Monospace:style=Bold:pixelsize=12}CPU USAGE ${color6}${hr 2 }
 ${color}${font Monospace:style=Bold:pixelsize=8}
-CORE I:                        CORE II:${font Monospace:size=6.5}
-${freq}MHz / ${acpitemp}°C ${color3}(${cpu cpu1}%)           ${color}${freq}MHz / ${acpitemp}°C ${color3}(${cpu cpu2}%)
-${cpubar 5,120 cpu1}       ${cpubar 5,120 cpu2}
-${color}1st ${color4}${top name 1}${top cpu 1}%${alignr}${color}1st ${color4}${top name 2}${top cpu 2}%
-${color}2nd ${color}${top name 3}${top cpu 3}%${alignr}${color}2nd ${color}${top name 4}${top cpu 4}%
-${color}3rd ${color1}${top name 5}${top cpu 5}%${alignr}${color}3rd ${color1}${top name 6}${top cpu 6}%
-${color}4th ${color2}${top name 7}${top cpu 7}%${alignr}${color}4th ${color2}${top name 8}${top cpu 8}%
-${color}5th ${color3}${top name 9}${top cpu 9}%${alignr}${color}5th ${color3}${top name 10}${top cpu 10}%
+TOTAL:${font Monospace:size=6.5}
+${freq_g}GHz / ${exec sensors | grep 'Tctl:' | awk '{print $2}' | cut -c2-} ${color3}(${cpu cpu0}%)
+${cpubar 5,120 cpu1}
+${color}1st ${color4}${top name 1}${top cpu 1}%${alignr}${color}6th ${color4}${top name 6}${top cpu 6}%
+${color}2nd ${color}${top name 2}${top cpu 2}%${alignr}${color}7th ${color}${top name 7}${top cpu 7}%
+${color}3rd ${color1}${top name 3}${top cpu 3}%${alignr}${color}8th ${color1}${top name 8}${top cpu 8}%
+${color}4th ${color2}${top name 4}${top cpu 4}%${alignr}${color}9th ${color2}${top name 9}${top cpu 9}%
+${color}5th ${color3}${top name 5}${top cpu 5}%${alignr}${color}10th ${color3}${top name 10}${top cpu 10}%
 
 
 ${color4}${font Monospace:style=Bold:pixelsize=12}MEMORY USAGE ${color6}${hr 2 }
@@ -149,25 +149,29 @@ ${color}5th ${color3}${top_mem name 5}${top_mem mem 5}% ${alignr}${color}10th ${
 
 ${color4}${font Monospace:style=Bold:pixelsize=12}DISK USAGE ${color6}${hr 2 }
 
-${color}${font Monospace:style=Bold:pixelsize=11}COMPUTER:${font Monospace:size=7} ${alignr}${fs_used /}/${fs_size /}
+${color}${font Monospace:style=Bold:pixelsize=11}MAIN:${font Monospace:size=7} ${alignr}${fs_used /}/${fs_size /}
 ${alignr}${color2}${fs_used_perc /}% ${color3}${fs_bar 5,120 /}
+
+${color}${font Monospace:style=Bold:pixelsize=11}DATA:${font Monospace:size=7} ${alignr}${fs_used /home/ncitron/data}/${fs_size /home/ncitron/data}
+${alignr}${color2}${fs_used_perc /home/ncitron/data}% ${color3}${fs_bar 5,120 /}
+
 
 ${color4}${font Monospace:style=Bold:pixelsize=12}INTERNET ${color6}${hr 2 }
 
 ${font Monospace:style=Bold:pixelsize=11}${color}WIRELESS:${font Monospace:size=7}
-#${color}SSID: ${alignr} ${color}${wireless_essid wlan0}
-${color}SIGNAL STRENGTH: ${alignr} ${color1}${wireless_link_qual wlan0}%
-#${color}WLAN IP: ${alignr} ${color}${addr wlan0}
-#${color}MAC: ${alignr} ${color}${wireless_ap wlan0}
+#${color}SSID: ${alignr} ${color}${wireless_essid enp5s0}
+${color}SIGNAL STRENGTH: ${alignr} ${color1}${wireless_link_qual enp5s0}%
+#${color}WLAN IP: ${alignr} ${color}${addr enp5s0}
+#${color}MAC: ${alignr} ${color}${wireless_ap enp5s0}
 
 
-${color}${font Monospace:style=Bold:pixelsize=11}DOWN SPEED:${font Monospace:size=7} ${alignr} ${color2}${downspeed wlan0} kb/s 
-${alignr}${color BBCCDD}${downspeedgraph wlan0 20,290 EF5A29 EF5A29}
-${color}TOTAL DOWN ${alignr}${totaldown wlan0} 
+${color}${font Monospace:style=Bold:pixelsize=11}DOWN SPEED:${font Monospace:size=7} ${alignr} ${color2}${downspeed enp5s0} kb/s 
+${alignr}${color BBCCDD}${downspeedgraph enp5s0 20,290 EF5A29 EF5A29}
+${color}TOTAL DOWN ${alignr}${totaldown enp5s0} 
 
-${color}${font Monospace:style=Bold:pixelsize=11}UP SPEED:${font Monospace:size=7} ${alignr} ${color2}${upspeed wlan0} kb/s 
-${alignr}${color BBCCDD}${upspeedgraph wlan0 20,290 77B753 77B753}
-${color}TOTAL UP ${alignr}${totalup wlan0}
+${color}${font Monospace:style=Bold:pixelsize=11}UP SPEED:${font Monospace:size=7} ${alignr} ${color2}${upspeed enp5s0} kb/s 
+${alignr}${color BBCCDD}${upspeedgraph enp5s0 20,290 77B753 77B753}
+${color}TOTAL UP ${alignr}${totalup enp5s0}
 
 
 ${color}${font :size=10:style=Bold}${alignc}"Talk is cheap. Show me the code"
