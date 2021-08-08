@@ -153,7 +153,7 @@ ${color}${font Monospace:style=Bold:pixelsize=11}MAIN:${font Monospace:size=7} $
 ${alignr}${color2}${fs_used_perc /}% ${color3}${fs_bar 5,120 /}
 
 ${color}${font Monospace:style=Bold:pixelsize=11}DATA:${font Monospace:size=7} ${alignr}${fs_used /home/ncitron/data}/${fs_size /home/ncitron/data}
-${alignr}${color2}${fs_used_perc /home/ncitron/data}% ${color3}${fs_bar 5,120 /}
+${alignr}${color2}${fs_used_perc /home/ncitron/data}% ${color3}${fs_bar 5,120 /home/ncitron/data}
 
 
 ${color4}${font Monospace:style=Bold:pixelsize=12}INTERNET ${color6}${hr 2 }
